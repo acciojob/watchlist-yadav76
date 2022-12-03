@@ -6,56 +6,99 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+//@Component
+//@Service
+//public class MovieService {
+//
+//    @Autowired
+//    MovieRepository movieRepository;
+//
+//    // to add Movies
+//    public void addMovie(Movie m) {
+//        movieRepository.addMovie(m);
+//    }
+//
+//    // Add director
+//    public void addDirector(Director d) {
+//        movieRepository.addDirector(d);
+//    }
+//
+//    // Create movie director Pair
+//    public void movieDirectorPair(String movieName, String directorName) {
+//        movieRepository.addDirectorMoviePair(directorName,movieName);
+//    }
+//
+//    // Find Movie
+//    public Movie findMovie(String movie) {
+//        return movieRepository.findMovie(movie);
+//    }
+//
+//    // Find Director
+//    public Director findDirector(String director) {
+//        return movieRepository.findDirector(director);
+//    }
+//
+//    // Find moives by director
+//    public List<String> findMoviesFromDirector(String directorName) {
+//        return movieRepository.moviesOfDirector(directorName);
+//    }
+//
+//    // get list of all movies
+//    public List<String> allMovies() {
+//        return movieRepository.getAllMovies();
+//    }
+//
+//    // Delete A Director and Its movies
+//    public void deleteDirector(String directorName) {
+//        movieRepository.deleteDiretorAndItsMovies(directorName);
+//    }
+//
+//    // Delete AllDirectors
+//    public void deleteAllDirectors() {
+//        movieRepository.deleteAllDirectors();
+//    }
+//
+//}
+
 @Service
 public class MovieService {
 
     @Autowired
     MovieRepository movieRepository;
 
-    // to add Movies
-    public void addMovie(Movie m) {
-        movieRepository.addMovie(m);
+    public void addMovie(Movie movie){
+        movieRepository.saveMovie(movie);
     }
 
-    // Add director
-    public void addDirector(Director d) {
-        movieRepository.addDirector(d);
+    public void addDirector(Director director){
+        movieRepository.saveDirector(director);
     }
 
-    // Create movie director Pair
-    public void movieDirectorPair(String movieName, String directorName) {
-        movieRepository.addDirectorMoviePair(directorName,movieName);
+    public void createMovieDirectorPair(String movie, String director){
+        movieRepository.saveMovieDirectorPair(movie, director);
     }
 
-    // Find Movie
-    public Movie findMovie(String movie) {
-        return movieRepository.findMovie(movie);
+    public Movie findMovie(String movieName){
+        return movieRepository.findMovie(movieName);
     }
 
-    // Find Director
-    public Director findDirector(String director) {
-        return movieRepository.findDirector(director);
+    public Director findDirector(String directorName){
+        return movieRepository.findDirector(directorName);
     }
 
-    // Find moives by director
-    public List<String> findMoviesFromDirector(String directorName) {
-        return movieRepository.moviesOfDirector(directorName);
+    public List<String> findMoviesFromDirector(String director){
+        return movieRepository.findMoviesFromDirector(director);
     }
 
-    // get list of all movies
-    public List<String> allMovies() {
-        return movieRepository.getAllMovies();
+    public List<String> findAllMovies(){
+        return movieRepository.findAllMovies();
     }
 
-    // Delete A Director and Its movies
-    public void deleteDirector(String directorName) {
-        movieRepository.deleteDiretorAndItsMovies(directorName);
+    public void deleteDirector(String director){
+        movieRepository.deleteDirector(director);
     }
 
-    // Delete AllDirectors
-    public void deleteAllDirectors() {
-        movieRepository.deleteAllDirectors();
+    public void deleteAllDirectors(){
+        movieRepository.deleteAllDirector();
     }
-
 }
