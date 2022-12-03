@@ -12,9 +12,9 @@ public class Director {
 
     }
 
-    public Director(String name, int durationInMinutes, double imdbRating) {
+    public Director(String name, int numberOfMovies, double imdbRating) {
         this.name = name;
-        this.numberOfMovies = durationInMinutes;
+        this.numberOfMovies = numberOfMovies;
         this.imdbRating = imdbRating;
     }
 
