@@ -17,9 +17,9 @@ public class MovieRepository {
 
     // Constructor to initialize all Three HashMaps
     public MovieRepository() {
-        this.movies = new HashMap<>();
-        this.directors = new HashMap<>();
-        this.directorMoviePair = new HashMap<>();
+        this.movies = new HashMap<String, Movie>();
+        this.directors = new HashMap<String, Director>();
+        this.directorMoviePair = new HashMap<String, List<String>>();
     }
 
     // Adding Movies to movie Map
@@ -58,10 +58,11 @@ public class MovieRepository {
 
     // Get movies a Particular Director
     public List<String> moviesOfDirector(String directorName) {
+        List<String> moviesList = new ArrayList<String>();
         if (directorMoviePair.containsKey(directorName))
-            return directorMoviePair.get(directorName);
+            moviesList = directorMoviePair.get(directorName);
 
-        return null;
+        return moviesList;
     }
 
     // Get List of all movies added to Movie Map
