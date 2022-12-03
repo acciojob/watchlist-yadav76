@@ -20,7 +20,7 @@ public class MovieController {
     public ResponseEntity<String> addMovie(@RequestBody() Movie m) {
 
         movieService.addMovie(m);
-        return new ResponseEntity("success", HttpStatus.CREATED);
+        return new ResponseEntity("New movie added successfully", HttpStatus.CREATED);
     }
 
 
@@ -29,7 +29,7 @@ public class MovieController {
     public ResponseEntity<String> addDirector(@RequestBody() Director d) {
 
         movieService.addDirector(d);
-        return new ResponseEntity<>("success",HttpStatus.CREATED);
+        return new ResponseEntity<>("New director added successfully",HttpStatus.CREATED);
     }
 
 
@@ -39,7 +39,7 @@ public class MovieController {
                                                        @RequestParam("director")String director) {
 
         movieService.movieDirectorPair(movie,director);
-        return new ResponseEntity<>("success",HttpStatus.CREATED);
+        return new ResponseEntity<>("New movie-director pair added successfully",HttpStatus.CREATED);
     }
 
 
@@ -79,7 +79,7 @@ public class MovieController {
     public ResponseEntity<String> deleteDirectorByName(@RequestParam("name") String directorName) {
 
         movieService.deleteDirector(directorName);
-        return new ResponseEntity<>("success",HttpStatus.CREATED);
+        return new ResponseEntity<>(directorName + "removed successfully",HttpStatus.CREATED);
     }
 
 
@@ -88,6 +88,6 @@ public class MovieController {
     public ResponseEntity<String> deleteAllDirectors() {
 
         movieService.deleteAllDirectors();
-        return new ResponseEntity<>("success",HttpStatus.CREATED);
+        return new ResponseEntity<>("All directors deleted successfully",HttpStatus.CREATED);
     }
 }
