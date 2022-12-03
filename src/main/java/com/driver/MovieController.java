@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -48,7 +49,8 @@ public class MovieController {
     @GetMapping("/get-movie-by-name/{name}")
     public ResponseEntity<Movie> getMovieByName(@PathVariable("name") String name) {
 
-        return new ResponseEntity<>(movieService.findMovie(name),HttpStatus.CREATED);
+        Movie movie = movieService.findMovie(name);
+        return new ResponseEntity<>(movie,HttpStatus.CREATED);
     }
 
 
@@ -56,7 +58,8 @@ public class MovieController {
     @GetMapping("/get-director-by-name/{name}")
     public ResponseEntity<Director> getDirectorByName(@PathVariable("name")String name) {
 
-        return new ResponseEntity<>(movieService.findDirector(name),HttpStatus.CREATED);
+        Director director = movieService.findDirector(name);
+        return new ResponseEntity<>(director,HttpStatus.CREATED);
     }
 
 
@@ -64,14 +67,16 @@ public class MovieController {
     @GetMapping("/get-movies-by-director-name/{director}")
     public ResponseEntity<List<String>> getMoviesByDirectorName(@PathVariable String directorName) {
 
-       return new ResponseEntity<>(movieService.findMoviesFromDirector(directorName),HttpStatus.CREATED);
+        List<String> listOfMovies = movieService.findMoviesFromDirector(directorName);
+       return new ResponseEntity<>(listOfMovies,HttpStatus.CREATED);
     }
 
     // get all movies added to movies map
     @GetMapping("/get-all-movies")
     public ResponseEntity<List<String>> findAllMovies() {
 
-        return new ResponseEntity<>(movieService.allMovies(),HttpStatus.CREATED);
+        List<String> movies = movieService.allMovies();
+        return new ResponseEntity<>(movies,HttpStatus.CREATED);
     }
 
     // Delete a Driector from all records
